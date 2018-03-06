@@ -46,6 +46,8 @@ public class ProdutoBean implements Serializable {
 	private List<Fabricante> fabricantes;
 
 	private List<Produto> produtos;
+	
+	String nomeUser = System.getProperty("user.name"); 
 
 	public List<Fabricante> getFabricantes() {
 		return fabricantes;
@@ -114,11 +116,13 @@ public class ProdutoBean implements Serializable {
 
 			ProdutoDao produtoDao = new ProdutoDao();
 			Produto produtoRetorno = produtoDao.merge(produto);
+			
+			
 
 			Path origem = Paths.get(produto.getCaminho());
-			Path destino = Paths.get("C:/Users/Usuario/Desktop/Sistema Drograria Curso/Uploads/Produtos/"
+			Path destino = Paths.get("C:/Users/"+nomeUser+"/Desktop/Sistema Drograria Curso/Drogaria/Uploads/Produtos/"
 					+ produtoRetorno.getCodigo() + ".jpg");
-
+		
 			Files.copy(origem, destino, StandardCopyOption.REPLACE_EXISTING);
 
 			produto = new Produto();
@@ -146,7 +150,7 @@ public class ProdutoBean implements Serializable {
 			ProdutoDao produtoDao = new ProdutoDao();
 			produtoDao.excluir(produto);
 
-			Path arquivo = Paths.get("C:/Users/Usuario/Desktop/Sistema Drograria Curso/Uploads/Produtos/"
+			Path arquivo = Paths.get("C:/Users/"+nomeUser+"/Desktop/Sistema Drograria Curso/Drogaria/Uploads/Produtos/"
 					+ produto.getCodigo() + ".jpg");
 
 			Files.deleteIfExists(arquivo);
@@ -167,7 +171,7 @@ public class ProdutoBean implements Serializable {
 
 			produto = (Produto) evento.getComponent().getAttributes().get("produtoSelecionado");
 
-			produto.setCaminho("C:/Users/Usuario/Desktop/Sistema Drograria Curso/Uploads/Produtos/"
+			produto.setCaminho("C:/Users/"+nomeUser+"/Desktop/Sistema Drograria Curso/Drogaria/Uploads/Produtos/"
 					+ produto.getCodigo() + ".jpg");
 
 			FabricanteDao fabricanteDao = new FabricanteDao();

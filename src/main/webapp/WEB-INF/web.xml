@@ -23,7 +23,7 @@
 	<!-- Tema do PrimeFaces -->
 	<context-param>
 		<param-name>primefaces.THEME</param-name>
-		<param-value>admin-1.0.0-RC12</param-value>
+		<param-value>rocket</param-value>
 	</context-param>
 	
 	<!-- Definição do mecanismo de Upload -->

@@ -40,16 +40,16 @@
 			<url>http://repository.primefaces.org</url>
 			<layout>default</layout>
 		</repository>
-		
-		 <repository>
-        <snapshots/>
-        <id>snapshots</id>
-        <name>libs-snapshot</name>
-        <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    </repository>
+
+		<repository>
+			<snapshots />
+			<id>snapshots</id>
+			<name>libs-snapshot</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</repository>
 	</repositories>
-	
-	
+
+
 
 	<!-- Dependências -->
 	<dependencies>
@@ -137,6 +137,14 @@
 			<version>1.0.0-RC12</version>
 			<classifier>no-cache</classifier>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.45</version>
+		</dependency>
+
 
 
 	</dependencies>
