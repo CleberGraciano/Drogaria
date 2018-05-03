@@ -32,7 +32,7 @@ public class VendaDao extends GenericDao<Venda> {
 				
 				int quantidade = produto.getQuantidade()-itemVenda.getQuantidade();
 				
-				if(quantidade > 0) {
+				if(quantidade >= 0) {
 					
 					produto.setQuantidade(new Short(quantidade + ""));
 					

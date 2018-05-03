@@ -209,7 +209,9 @@ public class ProdutoBean implements Serializable {
 
 		// Relatorio relatorio = new Relatorio();
 		// relatorio.getRelatorio(produtos);
-
+		
+		
+		
 		DataTable tabela = (DataTable) Faces.getViewRoot().findComponent("formListagem:tabela");
 
 		Map<String, Object> filtros = tabela.getFilters();
@@ -242,6 +244,8 @@ public class ProdutoBean implements Serializable {
 		Connection conexao = HibernateUtil.getConexao();
 
 		try {
+			
+			
 
 			JasperPrint relatorio = JasperFillManager.fillReport(caminho + "produtos.jasper", parametros, conexao);
 			byte[] bytes = JasperExportManager.exportReportToPdf(relatorio);

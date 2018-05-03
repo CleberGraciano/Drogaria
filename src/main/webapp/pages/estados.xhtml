@@ -77,9 +77,13 @@
 		<h:form id="formCadastro">
 			<h:panelGrid columns="2" id="painel">
 				<p:outputLabel value="Nome:" for="nome" />
-				<p:inputText maxlength="50" size="30"	value="#{estadoBean.estado.nome}" id="nome" required="true" requiredMessage="Campo Nome  Obrigatorio" />
+				<p:inputText maxlength="50" size="30" value="#{estadoBean.estado.nome}" id="nome" required="true" requiredMessage="Campo Nome  Obrigatorio" converter="upperCaseConverter">
+				<p:ajax event="blur" update=":formCadastro:nome"/>
+				</p:inputText>
 				<p:outputLabel value="Sigla:" for="sigla"/>
-				<p:inputText maxlength="2" size="10" value="#{estadoBean.estado.sigla}" id="sigla" required="true" requiredMessage="Campo Sigla" />
+				<p:inputText maxlength="2" size="10" value="#{estadoBean.estado.sigla}" id="sigla" required="true" requiredMessage="Campo Sigla" converter="upperCaseConverter">
+				<p:ajax event="blur" update="@this"/>
+				</p:inputText>
 			</h:panelGrid>
 			<h:panelGrid columns="2">
 				<p:commandButton value="Salvar"

@@ -1,7 +1,6 @@
 package br.pro.delfino.drogaria.bean;
 
 import java.io.Serializable;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,7 +17,6 @@ import org.omnifaces.util.Messages;
 
 import com.google.gson.Gson;
 
-import br.pro.delfino.drogaria.dao.FabricanteDao;
 import br.pro.delfino.drogaria.domain.Fabricante;
 
 @SuppressWarnings("serial")
@@ -122,8 +120,8 @@ public class FabricanteBean implements Serializable {
 			Gson gson = new Gson();
 
 			// transforma o json em vetor
+			json = caminho.request().get(String.class);
 			Fabricante[] vetor = gson.fromJson(json, Fabricante[].class);
-
 			// converte o vetor para array list
 			fabricantes = Arrays.asList(vetor);
 
@@ -140,17 +138,26 @@ public class FabricanteBean implements Serializable {
 		try {
 
 			fabricante = (Fabricante) evento.getComponent().getAttributes().get("fabricanteSelecionado");
-
-			FabricanteDao fabricanteDao = new FabricanteDao();
-			fabricanteDao.excluir(fabricante);
-
-			listar();
+			
+			Client cliente = ClientBuilder.newClient();
+			WebTarget caminho = cliente.target("http://127.0.0.1:8080/Drogaria/rest/fabricante");
+			WebTarget caminhoExcluir = caminho.path("{codigo}").resolveTemplate("codigo", fabricante.getCodigo());
+			
+			caminhoExcluir.request().delete();
+			String json = caminho.request().get(String.class);
+			
+			Gson gson = new Gson();
+			Fabricante[] vetor = gson.fromJson(json, Fabricante[].class);
+	
+			fabricantes = Arrays.asList(vetor);
+			
+			
 
 			Messages.addGlobalInfo("Fabricante Excluido com Sucesso");
 
 		} catch (RuntimeException erro) {
 
-			Messages.addGlobalError("Erro ao salvar Fabricante");
+			Messages.addGlobalError("Erro ao Excluir Fabricante");
 			erro.printStackTrace();
 
 		}

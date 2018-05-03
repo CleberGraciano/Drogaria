@@ -94,6 +94,13 @@
 			<artifactId>all-themes</artifactId>
 			<version>1.0.10</version>
 		</dependency>
+		
+		<!-- Tema Primefaces -->
+		<dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>ultima</artifactId>
+			<version>1.0.6</version>
+		</dependency>
 
 		<!-- OmniFaces -->
 		<dependency>
@@ -144,6 +151,14 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.45</version>
 		</dependency>
+		
+		<!-- apache shiro-core -->
+		<dependency>
+		    <groupId>org.apache.shiro</groupId>
+		    <artifactId>shiro-core</artifactId>
+		    <version>1.4.0</version>
+		</dependency>
+		
 
 
 

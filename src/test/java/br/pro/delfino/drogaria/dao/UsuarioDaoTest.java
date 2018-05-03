@@ -2,6 +2,7 @@ package br.pro.delfino.drogaria.dao;
 
 import java.util.List;
 
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -12,26 +13,45 @@ public class UsuarioDaoTest {
 	@Test
 	@Ignore
 	public void salvar() {
-		Long codigoPessoa = 1L;
+		Long codigoPessoa = 4L;
 		PessoaDao pessoaDao = new PessoaDao();
 		Pessoa pessoa = pessoaDao.Buscar(codigoPessoa);
 
 		System.out.println("Pessoa encontrada ");
 		System.out.println("Nome: " + pessoa.getNome());
 		System.out.println("Nome: " + pessoa.getCpf());
+		
+		
 
 		Usuario usuario = new Usuario();
 
 		usuario.setAtivo(true);
 		usuario.setPessoa(pessoa);
-		usuario.setSenha("q1w2e3");
-		usuario.setTipo('A');
+		usuario.setSenhaSemCriptografia("q1w2e3");
+		
+		SimpleHash hash = new SimpleHash("md5", usuario.getSenhaSemCriptografia());
+		usuario.setSenha(hash.toHex());
+		usuario.setTipo('G');
 
 		UsuarioDao usuarioDao = new UsuarioDao();
 
 		usuarioDao.salvar(usuario);
 
 	}
+	
+	
+	@Test
+	public void autenticar() {
+		String cpf="418.848.738-04";
+		String senha="q1w2e3";
+		
+		UsuarioDao usuarioDao = new UsuarioDao();
+	
+		Usuario usuario = usuarioDao.autenticar(cpf, senha);
+		
+		System.out.println("Usuário autenticado: " + usuario);
+	}
+	
 
 	@Test
 	@Ignore
@@ -92,6 +112,7 @@ public class UsuarioDaoTest {
 	}
 	
 	@Test
+	@Ignore
 	public void editar() {
 		
 		Long codigoPessoa = 1L;

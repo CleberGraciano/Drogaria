@@ -23,7 +23,7 @@
 	<!-- Tema do PrimeFaces -->
 	<context-param>
 		<param-name>primefaces.THEME</param-name>
-		<param-value>rocket</param-value>
+		<param-value>casablanca</param-value>
 	</context-param>
 	
 	<!-- Definição do mecanismo de Upload -->

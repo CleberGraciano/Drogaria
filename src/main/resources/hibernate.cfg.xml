@@ -44,6 +44,8 @@
 		<mapping class="br.pro.delfino.drogaria.domain.Venda"/>
 		<mapping class="br.pro.delfino.drogaria.domain.ItemVenda"/>
 		<mapping class="br.pro.delfino.drogaria.domain.Historico"/>
+		<mapping class="br.pro.delfino.drogaria.domain.Caixa"/>
+		<mapping class="br.pro.delfino.drogaria.domain.Movimentacao"/>
 	
 		
 	</session-factory>
