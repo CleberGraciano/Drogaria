@@ -13,9 +13,11 @@
 </f:metadata>
 
 </h:head>
-<h:body>
 
-	<h:form id="formCadastro" enctype="multipart/form-data">
+<h:body>
+<p:growl id="mensagem" />
+	<h:form id="formCadastro" >
+	<p:panel header="Produtos - Edição">
 				<h:panelGrid id="painel" columns="2">
 
 					<p:outputLabel value="Descrição:" for="descricao" />
@@ -55,27 +57,12 @@
 							var="fabricante" />
 					</p:selectOneMenu>
 
-
-
-					<p:outputLabel for="upload" value="Upload:" />
-					<p:fileUpload id="upload" mode="advanced"
-						fileUploadListener="#{produtoBean.upload}"
-						update=":mensagem :formCadastro:foto" auto="true" />
-
-					<p:outputLabel for="foto" value="Foto:" />
-					<p:graphicImage id="foto" value="#{imagemBean.foto}" height="20%"
-						width="20%">
-						<f:param name="caminho" value="#{produtoBean.produto.caminho}" />
-					</p:graphicImage>
 				</h:panelGrid>
 				<h:panelGrid columns="2">
-					<p:commandButton value="Salvar"
-						actionListener="#{produtoBean.salvar}"
-						update=":mensagem :formCadastro:painel :formListagem:tabela"
-						icon="ui-icon-disk" />
-					<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();"
-						icon="ui-icon-close" />
+					<p:commandButton value="Editar" update=":mensagem"/>
+					<p:commandButton value="Voltar" update=":mensagem"/>
 				</h:panelGrid>
+				</p:panel>
 			</h:form>
 	
 	
