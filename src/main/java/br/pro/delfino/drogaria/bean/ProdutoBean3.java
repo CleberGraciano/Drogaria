@@ -20,6 +20,7 @@ import br.pro.delfino.drogaria.domain.Produto;
 public class ProdutoBean3 implements Serializable {
 	
 	private Produto produto;
+	private Long codigoProduto;
 	private List<Fabricante> fabricantes;
 	private List<Produto> produtos;
 	
@@ -27,6 +28,15 @@ public class ProdutoBean3 implements Serializable {
 	private ProdutoDao produtoDao;
 	
 	
+	
+
+	public Long getCodigoProduto() {
+		return codigoProduto;
+	}
+
+	public void setCodigoProduto(Long codigoProduto) {
+		this.codigoProduto = codigoProduto;
+	}
 
 	public Produto getProduto() {
 		return produto;
@@ -71,6 +81,18 @@ public class ProdutoBean3 implements Serializable {
 			erro.printStackTrace();
 		}
 
+	}
+	
+	public void carregarEdicao() {
+		try {
+			produto = produtoDao.Buscar(codigoProduto);
+			
+			fabricantes = fabricanteDao.listar("descricao");
+		} catch (RuntimeException erro) {
+			Messages.addGlobalError("Ocorreu um erro ao tentar carregar os dados para Edição");
+			erro.printStackTrace();
+		}
+		
 	}
 	
 

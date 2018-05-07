@@ -5,6 +5,8 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	
+	<ui:insert name="metadata" />
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>SiGDro
@@ -36,7 +38,7 @@
 						<p:menuitem value="Sair" icon="ui-icon-close" />
 					</p:submenu>
 
-					<p:submenu label="Cadastros" icon="ui-icon-pencil">
+					<p:submenu label="Cadastros" icon="ui-icon-pencil" rendered="#{autenticacaoBean.temPermissoes(['A', 'G'])}">
 						<p:menuitem value="Estado" url="/pages/estados.xhtml"/>
 						<p:menuitem value="Cidade" url="/pages/cidades.xhtml"/>
 						<p:menuitem value="Fabricante" url="/pages/fabricante.xhtml" />

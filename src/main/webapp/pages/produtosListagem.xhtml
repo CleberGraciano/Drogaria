@@ -54,8 +54,10 @@
 					<p:column headerText="Opções">
 
 						<p:commandButton icon="ui-icon-trash" />
-						<p:commandButton icon="ui-icon-pencil" />
-
+						<p:button icon="ui-icon-pencil" outcome="/pages/produtosEdicao.xhtmnl" >
+						
+						<f:param name="codigo"  value="#{produto.codigo}"/>
+						</p:button>
 					</p:column>
 				</p:dataTable>
 
